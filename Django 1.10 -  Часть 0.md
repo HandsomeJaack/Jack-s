@@ -67,4 +67,5 @@ Quit the server with CONTROL-C.
 
 --------
 Перевод: Handsome Jack (Дмитрий Бутаков)
+
 [Оригинал](http://blog.adnansiddiqi.me/develop-your-first-web-application-in-django-1-10-part-0/)
