@@ -129,12 +129,60 @@ Flask будет искать шаблоны в соседней папке temp
 {% endif %}
 ```
 
-###Доступ к запрашиваемым данным
+### Доступ к запрашиваемым данным
 
+##### Запрашиваемый объект
+Для начала импортируем следующий модуль:
+```python
+from flask import request
+```
+Для доступа к данным можно использовать атрибуты (см. пример ниже)
+```python
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+  error = Notttttttage_not_found.html'), 404
+```
 
+##### Сессия
+В дополнении к запрашиваемым объектам, существует второй объек - сессия, которая позволяет хранить данные между запросами.
+Для того чтобы использвать сессии необходимо использовать секретные ключи. Пример работы сессии:
+```python
+from flask import Flask, session, redirect, url_for, escape, request
 
+app = Flask(__name__)
+@app.route('/')
+def index():
+  if 'username' in session:
+    return 'Logged in as %s' % escape(session['username'])
+return 'You are not logged in'
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+  if request.method == 'POST':
+    session['username'] = request.form['username']
+    return redirect(url_for('index'))
+return '''
+<form method="post">
+<p><input type=text name=username>
+<p><input type=submit value=Login>
+</form>
+'''
+@app.route('/logout')
+def logout():
+  # remove the username from the session if it's there
+   session.pop('username', None)
+return redirect(url_for('index'))
 
+# set the secret key. keep this really secret:
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+```
+Для генерации хорошего случайного ключа можно использовать следующее:
+```bash
+>>> import os
+>>> os.urandom(24)
+'\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
+Just take that thing and copy/paste it into your code and you're done.
+```
 
 
 
