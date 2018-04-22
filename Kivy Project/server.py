@@ -1,29 +1,22 @@
 def input_processing(input_string):
     from Tone import chistka
-    print("Doing some process...")
+    print("Делаем всякую фигню...")
     return chistka(input_string)
 
 def client_thread(conn, ip, port, MAX_BUFFER_SIZE = 4096):
-
-    # ввод получаем в байтах, далее декодируем его
     input_bytes = conn.recv(MAX_BUFFER_SIZE)
-
-    # MAX_BUFFER_SIZE определяет максимальный размер сообщения
 
     import sys
     siz = sys.getsizeof(input_bytes)
     if siz >= MAX_BUFFER_SIZE:
         print("Длина ввода возможно слишком велика {}".format(siz))
-
-    # декодируем ввод и конец строки 
     input_decoded = input_bytes.decode("utf8").strip()
 
     res = input_processing(input_decoded)
     print("Результат обработки {} : {}".format(input_decoded, res))
-
-    vysl = res.tostring()
-    print(vysl) # перекодировка результата
-    conn.sendall(vysl)
+    r = res.tolist()
+    str1 = ''.join(str(e) for e in r)
+    conn.sendall(str1.encode("utf8"))
     conn.close()
     print("Соединение " + ip + ":" + port + " завершено")
 
