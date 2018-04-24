@@ -16,7 +16,7 @@ class ToneApp(App):
 	def build(self):
 		mark = [0.0 , 0.0]
 		f1 = BoxLayout(orientation='vertical', padding = [50], spacing = 25)
-		f1.add_widget(Label(text = "[anchor=title1][size=24] Введите любую фразу (более одого слова), чтобы получить её эмоциональную оценку: [/size]"))
+		f1.add_widget(Label(text = "Введите любую фразу (более одого слова), чтобы получить её эмоциональную оценку: "))
 		self.text1 =TextInput(text = '', multiline = False)
 		f1.add_widget(self.text1)
 		f1.bind(on_text_validate=on_enter)
