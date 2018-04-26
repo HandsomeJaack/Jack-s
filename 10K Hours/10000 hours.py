@@ -110,7 +110,7 @@ if __name__ == '__main__':
 		print("Total programming hours: %s " %  str(time(lastsave_python + lastsave_cpp + lastsave_sublime)))
 
 		common_file.seek(0)
-		common_file.write(str(lastsave_python + lastsave_cpp + lastsave_sublime))
+		common_file.write(str(lastsave_sublime))
 		common_file.close()
 
 		python_file.seek(0)
