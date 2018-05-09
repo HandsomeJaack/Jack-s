@@ -1,4 +1,5 @@
-!(https://files.realpython.com/media/python3-oop.01ea6aa3e8ef.jpg)
+
+![Python-OOP](https://files.realpython.com/media/python3-oop.01ea6aa3e8ef.jpg)
 
 # Улучши свои познания в Python: Классы в Python и объектно-ориентированное программирование.
 
